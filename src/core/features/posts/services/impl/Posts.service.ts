@@ -1,6 +1,7 @@
 import { AxiosInstance, AxiosPromise } from "axios";
 import { IPostsService } from "core/features/posts/services/IPosts.service";
 import { Post } from "core/api/models/Post";
+import { PostPayload } from "core/types/PostPayload.type";
 
 export class PostsService implements IPostsService {
     constructor(private api: AxiosInstance) {}
@@ -9,7 +10,7 @@ export class PostsService implements IPostsService {
         return this.api.get("/articles?sortBy=createdAt&order=desc");
     };
 
-    createPost = (payload: Post): AxiosPromise<Post> => {
+    createPost = (payload: PostPayload): AxiosPromise<Post> => {
         return this.api.post("/articles", payload);
     };
 

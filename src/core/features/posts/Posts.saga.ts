@@ -1,4 +1,4 @@
-import { postService } from "./services";
+import { postsService } from "./services";
 import { call, put } from "redux-saga/effects";
 
 import { postsSlice } from "./Posts.slice";
@@ -16,7 +16,7 @@ const {
 
 export function* getPostsSaga() {
     try {
-        const { data, status, error } = yield call(postService.getPosts);
+        const { data, status, error } = yield call(postsService.getPosts);
         if (status === 200) {
             yield put(fetchPostsSuccess(data));
         } else {
@@ -29,7 +29,7 @@ export function* getPostsSaga() {
 
 export function* createPostSaga({ payload }: PayloadAction<Post>) {
     try {
-        const { data, status, error } = yield call(postService.createPost, payload);
+        const { data, status, error } = yield call(postsService.createPost, payload);
         if (status === 201) {
             yield put(createPostSuccess(data));
         } else {
@@ -42,7 +42,7 @@ export function* createPostSaga({ payload }: PayloadAction<Post>) {
 
 export function* deletePostSaga({ payload }: PayloadAction<string>) {
     try {
-        const { data, status, error } = yield call(postService.deletePost, payload);
+        const { data, status, error } = yield call(postsService.deletePost, payload);
         if (status === 200) {
             yield put(deletePostSuccess(data));
         } else {

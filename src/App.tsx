@@ -20,9 +20,6 @@ export const App: FC = () => {
                     <Route exact path="/posts">
                         <Posts />
                     </Route>
-                    <Route exact path="/posts">
-                        <Posts />
-                    </Route>
                     <Route exact path="/">
                         <Home />
                     </Route>
